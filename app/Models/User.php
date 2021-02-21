@@ -40,4 +40,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+        public function toUserId()
+    {
+        return $this->hasMany('App\Like', 'user_id', 'id');
+    }
+
+    public function fromUserId()
+    {
+        return $this->hasMany('App\Reserve', 'user_id', 'id');
+    }
 }
