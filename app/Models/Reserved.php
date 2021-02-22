@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Reserve extends Model
+class Reserved extends Model
 {
-    use HasFactory;
-                public function toUserId()
+   use HasFactory;
+     public function toUserId()
     {
         return $this->belongsTo('App\User', 'user_id', 'id');
     }

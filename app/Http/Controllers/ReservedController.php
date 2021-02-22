@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Reserve;
+use App\Models\Reserved;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 
-class ReservesController extends Controller
+class ReservedController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -30,7 +29,7 @@ class ReservesController extends Controller
      */
     public function store(Request $request)
     {
-        $now=Carbon::now();
+         $now=Carbon::now();
         $item=new Reserve;
         $item->user_id=$request->user_id;
         $item->shop_id=$request->shop_id;
@@ -49,10 +48,10 @@ class ReservesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Reserve  $reserve
+     * @param  \App\Models\Reserved  $reserved
      * @return \Illuminate\Http\Response
      */
-    public function show(Reserve $reserve)
+    public function show(Reserved $reserved)
     {
         $item=Reserve::where('id',$reserve->id)->first();
         if ($item) {
@@ -65,16 +64,17 @@ class ReservesController extends Controller
                 'message' => 'Not found',
             ], 404);
         }
+
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Reserve  $reserve
+     * @param  \App\Models\Reserved  $reserved
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reserve $reserve)
+    public function update(Request $request, Reserved $reserved)
     {
         //
     }
@@ -82,10 +82,10 @@ class ReservesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Reserve  $reserve
+     * @param  \App\Models\Reserved  $reserved
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reserve $reserve)
+    public function destroy(Reserved $reserved)
     {
         $item=Reserve::where('id',$reserve->id)->delete();
         if ($item) {
@@ -97,5 +97,6 @@ class ReservesController extends Controller
                 'message' => 'Not found',
             ], 404);
         }
+
     }
 }
